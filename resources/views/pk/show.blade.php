@@ -29,44 +29,44 @@
                 </form>
             </div>
 
-            <!-- Dokumentasi Pelaksanaan Pekerjaan (Model Si Ujang) -->
+            <!-- Dokumentasi Pelaksanaan Pekerjaan (Model Si Ujang - Kompak & Proporsional) -->
             <div class="bg-white p-6 rounded-lg shadow-sm">
                 <h3 class="font-bold text-lg text-gray-800 mb-4">Dokumentasi Pelaksanaan Pekerjaan</h3>
 
                 @if($pk->fotoDokumentasis->isEmpty())
                     <p class="text-gray-500 text-sm italic">Belum ada foto dokumentasi yang diunggah untuk PK ini.</p>
                 @else
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
                         @foreach($pk->fotoDokumentasis as $index => $foto)
                             <div class="border rounded-lg overflow-hidden bg-gray-50 shadow-sm flex flex-col justify-between">
                                 <div>
-                                    <!-- Header Nomor Urut Foto ala Si Ujang -->
-                                    <div class="bg-amber-100 text-amber-800 font-bold text-center py-1 text-sm border-b border-amber-200">
+                                    <!-- Header Nomor Urut -->
+                                    <div class="bg-amber-100 text-amber-800 font-bold text-center py-0.5 text-xs border-b border-amber-200">
                                         {{ $index + 1 }}
                                     </div>
                                     
-                                    <!-- Pratinjau Gambar -->
-                                    <div class="p-2">
+                                    <!-- Pratinjau Gambar Proporsional -->
+                                    <div class="p-1.5">
                                         <a href="{{ asset('storage/' . $foto->file_path_url) }}" target="_blank">
-                                            <img src="{{ asset('storage/' . $foto->file_path_url) }}" alt="Foto {{ $index + 1 }}" class="w-full h-40 object-cover rounded border hover:opacity-90 transition">
+                                            <img src="{{ asset('storage/' . $foto->file_path_url) }}" alt="Foto {{ $index + 1 }}" class="w-full h-28 object-cover rounded border hover:opacity-90 transition">
                                         </a>
                                     </div>
                                 </div>
 
-                                <!-- Informasi Uploader & Tanggal Upload + Tombol Hapus -->
-                                <div class="p-2 bg-white border-t text-xs text-gray-600">
+                                <!-- Informasi Uploader & Tanggal Upload -->
+                                <div class="p-1.5 bg-white border-t text-[11px] text-gray-600">
                                     <p class="font-medium truncate" title="{{ $foto->uploader->nama_lengkap ?? 'Uploader' }}">
                                         👤 {{ $foto->uploader->nama_lengkap ?? 'System' }}
                                     </p>
-                                    <p class="text-gray-400 mt-0.5">
+                                    <p class="text-gray-400 text-[10px]">
                                         📅 {{ $foto->created_at ? $foto->created_at->format('d/m/Y H:i') : '-' }}
                                     </p>
 
                                     <!-- Tombol Hapus Foto -->
-                                    <form action="{{ route('foto.destroy', $foto) }}" method="POST" class="mt-2" onsubmit="return confirm('Hapus foto ini?')">
+                                    <form action="{{ route('foto.destroy', $foto) }}" method="POST" class="mt-1" onsubmit="return confirm('Hapus foto ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="w-full py-1 bg-red-50 text-red-600 font-semibold rounded hover:bg-red-100 text-center transition">
+                                        <button type="submit" class="w-full py-0.5 bg-red-50 text-red-600 font-semibold rounded hover:bg-red-100 text-center transition text-[11px]">
                                             🗑️ Hapus
                                         </button>
                                     </form>
