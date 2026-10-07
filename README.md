@@ -6,7 +6,7 @@ Sistem manajemen dokumen foto konstruksi ber-geotag (GPS Maps/EXIF) berbasis hir
 - **Ahmad Muhammad Husni Mubarok** (System Analyst & Software Architect)
 - **Saiful Alam** (UI/UX & Documentation Specialist)
 
-## 🚀 Fitur yang Sudah Berjalan
+## 🚀 Fitur Utama
 1. Autentikasi & Management User (Admin Penagihan, Supervisor, Worker).
 2. Master Data Kontrak Harga Satuan (KHS) & Kontrak Rinci (KR 0147).
 3. Pengelompokan Tahap Penagihan & PK/SPK Pekerjaan.
