@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'username' => 'admin_penagihan',
-            'nama_lengkap' => 'Ahmad Admin Penagihan',
+            'nama_lengkap' => 'Admin Penagihan',
             'email' => 'admin@diancahayaprima.com',
             'password' => Hash::make('password123'),
             'role' => 'ADMIN',
@@ -20,10 +20,18 @@ class UserSeeder extends Seeder
 
         User::create([
             'username' => 'spv_lapangan',
-            'nama_lengkap' => 'Supervisor Lapangan KR 0044',
+            'nama_lengkap' => 'Supervisor Lapangan',
             'email' => 'spv@diancahayaprima.com',
             'password' => Hash::make('password123'),
             'role' => 'SUPERVISOR',
+        ]);
+
+        User::create([
+            'username' => 'worker',
+            'nama_lengkap' => 'Worker Lapangan',
+            'email' => 'worker@diancahayaprima.com',
+            'password' => Hash::make('password123'),
+            'role' => 'WORKER',
         ]);
     }
 }
