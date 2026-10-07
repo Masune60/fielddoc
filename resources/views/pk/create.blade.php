@@ -31,9 +31,33 @@
                     </div>
 
                     <div>
-                        <x-input-label for="nilai_pekerjaan" value="Nilai Pekerjaan (Rp)" />
-                        <x-text-input id="nilai_pekerjaan" class="block mt-1 w-full" type="number" name="nilai_pekerjaan" value="0" required />
-                    </div>
+    <label for="nilai_pekerjaan_display" class="block text-sm font-medium text-gray-700 mb-1">Nilai Pekerjaan (Rp)</label>
+    <!-- Input tampilan dengan format ribuan -->
+    <input type="text" id="nilai_pekerjaan_display" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Contoh: 4.073.623" oninput="formatRupiah(this)">
+    <!-- Input hidden berisi angka murni yang dikirim ke database -->
+    <input type="hidden" name="nilai_pekerjaan" id="nilai_pekerjaan_raw" value="{{ old('nilai_pekerjaan', $pk->nilai_pekerjaan ?? '') }}">
+</div>
+
+<script>
+    function formatRupiah(input) {
+        let value = input.value.replace(/[^0-9]/g, '');
+        document.getElementById('nilai_pekerjaan_raw').value = value;
+        if (value) {
+            input.value = new Intl.NumberFormat('id-ID').format(value);
+        } else {
+            input.value = '';
+        }
+    }
+
+    // Set nilai awal jika sedang edit atau ada old input
+    document.addEventListener('DOMContentLoaded', function() {
+        let rawInput = document.getElementById('nilai_pekerjaan_raw');
+        let displayInput = document.getElementById('nilai_pekerjaan_display');
+        if (rawInput.value) {
+            displayInput.value = new Intl.NumberFormat('id-ID').format(rawInput.value);
+        }
+    });
+</script>
 
                     <div>
                         <x-input-label for="status_konstruksi" value="Status Konstruksi Fisik" />

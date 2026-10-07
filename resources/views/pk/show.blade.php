@@ -36,7 +36,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     @forelse ($pk->fotoDokumentasis as $foto)
                         <div class="border rounded-lg p-2 shadow-sm">
-                            <img src="{{ asset('storage/' . $foto->file_path_url) }}" class="w-full h-48 object-cover rounded-md" alt="Dokumentasi">
+                            <img src="{{ asset('storage/' . $foto->file_path_url) }}" alt="Foto Dokumentasi" class="w-full h-48 object-cover rounded-md mb-2">
                             <div class="mt-2 text-xs text-gray-600 space-y-1">
                                 <p><strong>GPS:</strong> {{ $foto->latitude }}, {{ $foto->longitude }}</p>
                                 <p><strong>Tgl EXIF:</strong> {{ $foto->timestamp_exif ?? '-' }}</p>
